@@ -21,15 +21,14 @@ pipeline {
                 echo 'Running Conftest in Docker...'
                 sh """
                 docker run --rm \
-                -v ${WORKSPACE}:/project \
+                -v ${WORKSPACE}:/project:rw \
                 -w /project openpolicyagent/conftest test \
                 --no-fail \
-                --policy /project/lab1-conftest/policies \
-                /project/lab1-conftest/manifests/deployment-insecure.yaml
+                --policy lab1-conftest/policies \
+                lab1-conftest/manifests/deployment-insecure.yaml
                 """
             }
         }
-
 
         stage('Policy Check - Checkov') {
             steps {
