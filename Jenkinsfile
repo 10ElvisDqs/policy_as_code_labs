@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'docker' }
+    agent any
 
     environment {
         GIT_URL = 'https://github.com/10ElvisDqs/policy_as_code_labs.git'
